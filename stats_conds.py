@@ -7,8 +7,6 @@
 import numpy as np
 import pandas_datareader as pdr
 import pandas as pd
-import warnings
-import pandas_ta as ta
 import streamlit as st
 
 warnings.filterwarnings("ignore")
