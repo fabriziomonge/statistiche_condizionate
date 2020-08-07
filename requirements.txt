@@ -5,6 +5,6 @@ pandas_datareader
 matplotlib
 xlrd
 seaborn
-sklearn
-pandas-ta
+scikit-learn==0.16.1
+pandas_ta
 warnings
