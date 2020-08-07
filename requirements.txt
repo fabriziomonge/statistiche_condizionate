@@ -4,5 +4,4 @@ pandas
 pandas_datareader
 matplotlib
 xlrd
-seaborn
-
+TA-Lib
