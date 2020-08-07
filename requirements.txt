@@ -5,3 +5,4 @@ pandas_datareader
 matplotlib
 xlrd
 seaborn
+pandas_ta
