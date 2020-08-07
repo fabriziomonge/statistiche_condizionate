@@ -1,7 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
 
-# In[705]:
 
 
 import numpy as np
@@ -154,7 +151,6 @@ st.bar_chart(importanza)
 # In[719]:
 
 
-§
 
 
 # # Condizioni da utilizzare
