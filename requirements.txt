@@ -5,3 +5,6 @@ pandas_datareader
 matplotlib
 xlrd
 seaborn
+sklearn
+pandas_ta
+warnings
