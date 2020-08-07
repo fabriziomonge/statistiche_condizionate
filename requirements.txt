@@ -5,5 +5,4 @@ pandas_datareader
 matplotlib
 xlrd
 seaborn
-scikit_learn
 warnings
