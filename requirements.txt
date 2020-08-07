@@ -5,5 +5,5 @@ pandas_datareader
 matplotlib
 xlrd
 seaborn
-scikit_learn==0.22
+scikit_learn
 warnings
