@@ -16,9 +16,43 @@ warnings.filterwarnings("ignore")
 
 # In[706]:
 
+#controllo accessi
+
+url = 'http://www.sphereresearch.net/Notebooks/Accessi.xlsx'
+accessi = pd.read_excel(url)
+accessi = accessi.set_index('User', drop = True)
+
+# In[4]:
+
+
+Utente = st.text_input("Inserire il nome utente")
+Psw = st.text_input("Inserire la password", type='password')
+
+
+# In[12]:
+
+
+try:
+
+    if Psw == accessi['Password'][Utente]:
+
+        titolo = st.text_input("Inserire il ticker da analizzare", "VTI")   
+    else:
+        st.write("""
+           In caso di utilizzo senza credenziali non sarà possibile modificare l'asset oggetto di studio.
+    """)
+        titolo = ("VTI")
+except:
+    
+    st.write("""
+       In caso di utilizzo senza credenziali non sarà possibile modificare l'asset oggetto di analisi.
+    """)
+    titolo = ("VTI")
+
+
 
 mesi_proiezione = st.number_input("mesi per la proiezione statistica", 1)
-titolo = st.text_input("ticker su cui effettuare la proiezione", 'VTI')
+
 
 
 # # Scarica la serie storica e disegnala
