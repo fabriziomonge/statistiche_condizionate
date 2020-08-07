@@ -6,7 +6,7 @@ import pandas_datareader as pdr
 import pandas as pd
 import streamlit as st
 
-warnings.filterwarnings("ignore")
+
 
 
 # In[706]:
