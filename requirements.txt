@@ -1,0 +1,7 @@
+streamlit==0.63.0
+numpy==1.17.3
+pandas
+pandas_datareader
+matplotlib
+xlrd
+seaborn
