@@ -278,3 +278,6 @@ statistiche
 st.write("""
 ## DISCLAIMER:
  """)
+st.write("""
+
+ """)
