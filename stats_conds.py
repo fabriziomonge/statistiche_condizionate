@@ -265,27 +265,27 @@ df2 = df1.loc[cond]
 print("STATISTICHE COMPARATE. Filtri applicati: ", filtri)
 print("")
 
-casi=  len(df2)
-casi_tot = len(df1)
-positivi_ass = round((len(df2.loc[df2['return']>=0])))
-positivi = round((len(df2.loc[df2['return']>=0]))/len(df2)*100,2)
-positivi_tot_ass =round((len(df1.loc[df1['return']>0])))
-positivi_tot =round((len(df1.loc[df1['return']>0]))/len(df1)*100,2)
-media = round(df2['return_log'].mean()*100,2) 
-media_tot = round(df1['return_log'].mean()*100,2)
+casi=  len(df2.dropna())
+casi_tot = len(df1.dropna())
+positivi_ass = round((len(df2.dropna().loc[df2.dropna()['return']>=0])))
+positivi = round((len(df2.dropna().loc[df2.dropna()['return']>=0]))/len(df2.dropna())*100,2)
+positivi_tot_ass =round((len(df1.dropna().loc[df1.dropna()['return']>0])))
+positivi_tot =round((len(df1.dropna().loc[df1.dropna()['return']>0]))/len(df1.dropna())*100,2)
+media = round(df2.dropna()['return_log'].mean()*100,2) 
+media_tot = round(df1.dropna()['return_log'].mean()*100,2)
 
-varianza = round(df2['return_log'].std()*100,2) 
-varianza_tot=round(df1['return_log'].std()*100,2)
+varianza = round(df2.dropna()['return_log'].std()*100,2) 
+varianza_tot=round(df1.dropna()['return_log'].std()*100,2)
 
 
-mediana = round(df2['return_log'].median()*100,2) 
-mediana_tot = round(df1['return_log'].median()*100,2)
+mediana = round(df2.dropna()['return_log'].median()*100,2) 
+mediana_tot = round(df1.dropna()['return_log'].median()*100,2)
 
-peggiore = round(df2['return'].min()*100,2) 
-peggiore_tot = round(df1['return'].min()*100,2)
+peggiore = round(df2.dropna()['return'].min()*100,2) 
+peggiore_tot = round(df1.dropna()['return'].min()*100,2)
 
-migliore = round(df2['return'].max()*100,2) 
-migliore_tot=round(df1['return'].max()*100,2)
+migliore = round(df2.dropna()['return'].max()*100,2) 
+migliore_tot=round(df1.dropna()['return'].max()*100,2)
 
 lista_sit = [ casi, positivi_ass, positivi, media, varianza, mediana, peggiore, migliore]
 lista_tot = [ casi_tot,positivi_tot_ass, positivi_tot, media_tot, varianza_tot, mediana_tot, peggiore_tot, migliore_tot]
