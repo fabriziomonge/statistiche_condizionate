@@ -242,7 +242,9 @@ print("")
 
 casi=  len(df2)
 casi_tot = len(df1)
+positivi_ass = round((len(df2.loc[df2['return']>=0])))
 positivi = round((len(df2.loc[df2['return']>=0]))/len(df2)*100,2)
+positivi_tot_ass =round((len(df1.loc[df1['return']>0])))
 positivi_tot =round((len(df1.loc[df1['return']>0]))/len(df1)*100,2)
 media = round(df2['return_log'].mean()*100,2) 
 media_tot = round(df1['return_log'].mean()*100,2)
@@ -260,11 +262,11 @@ peggiore_tot = round(df1['return'].min()*100,2)
 migliore = round(df2['return'].max()*100,2) 
 migliore_tot=round(df1['return'].max()*100,2)
 
-lista_sit = [ casi, positivi, media, varianza, mediana, peggiore, migliore]
-lista_tot = [ casi_tot, positivi_tot, media_tot, varianza_tot, mediana_tot, peggiore_tot, migliore_tot]
+lista_sit = [ casi, positivi_ass, positivi, media, varianza, mediana, peggiore, migliore]
+lista_tot = [ casi_tot,positivi_tot_ass, positivi_tot, media_tot, varianza_tot, mediana_tot, peggiore_tot, migliore_tot]
 
-statistiche = pd.DataFrame(lista_sit, index=['casi', 'positivi (%)', 'media (%)', 'varianza (%)', 'mediana (%)', 'peggiore risultato (%)', 'migliore risultato(%)'], columns=['con i parametri attuali'])
-statistiche['nella storia']=lista_tot
+statistiche = pd.DataFrame(lista_sit, index=['Casi', 'Di cui positivi', 'Positivi (%)', 'Media (%)', 'Varianza (%)', 'Mediana (%)', 'Peggiore risultato (%)', 'Migliore risultato(%)'], columns=['Con i parametri attuali'])
+statistiche['Nella storia']=lista_tot
 
 st.write("""
 ## Statistiche elaborate in base all'attuale condizione:
