@@ -31,20 +31,34 @@ Utente = st.text_input("Inserire il nome utente")
 Psw = st.text_input("Inserire la password", type='password')
 
 try:
-
+    
     if Psw == accessi['Password'][Utente]:
+        
+        st.write("""
+        # Base dell' analisi:
+        """)
 
         titolo = st.text_input("Inserire il ticker da analizzare", "VTI")   
     else:
         st.write("""
            In caso di utilizzo senza credenziali non sarà possibile modificare l'asset oggetto di studio.
     """)
+        
+        st.write("""
+        # Base dell' analisi:
+        """)
+        
         titolo = ("VTI")
 except:
     
     st.write("""
        In caso di utilizzo senza credenziali non sarà possibile modificare l'asset oggetto di analisi.
     """)
+    
+    st.write("""
+    # Base dell' analisi:
+    """)
+    
     titolo = ("VTI")
 
 mesi_proiezione = st.number_input("mesi per la proiezione statistica", 1)
