@@ -299,6 +299,9 @@ st.write("""
 statistiche
 
 st.write("""
+#  
+ """)
+st.write("""
 ## DISCLAIMER:
  """)
 st.write("""
