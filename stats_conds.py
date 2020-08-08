@@ -108,7 +108,7 @@ df['RSI_F'] = RSI(df.Close, 14)
 df.loc[df.RSI_F >= 80, 'RSI']=2
 df.loc[df.RSI_F <= 20, 'RSI']=0
 df.RSI = df.RSI.fillna(1)
-df = df.drop('RSI_F',1)
+# df = df.drop('RSI_F',1)
 
 
 # # Crea le labels
@@ -170,8 +170,10 @@ df1 = df.drop(['Close', 'MA200', 'MA50'],1)
 st.write("""
 ## Selezione parametri:
  """)
-
-st.line_chart(df)
+df_plotted = df[['Close','MA200','MA50']]
+st.line_chart(df_plotted)
+df_plotted2 = df[['RSI_F']]
+st.line_chart(df_plotted2)
 
 filtri = st.multiselect("seleziona le caratteristiche da tenere in considerazione", ['Media mobile 200', 'Media mobile 50', 'Incrocio delle medie', 'RSI'], default = ['Media mobile 200', 'Media mobile 50', 'Incrocio delle medie', 'RSI'] )
 
