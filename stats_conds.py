@@ -168,14 +168,17 @@ df1 = df.drop(['Close', 'MA200', 'MA50'],1)
 # In[88]:
 
 st.write("""
-## Selezione parametri:
+## Parametri disponibili per l'analisi statistica:
  """)
 df_plotted = df[['Close','MA200','MA50']]
 st.line_chart(df_plotted)
 df_plotted2 = df[['RSI_F']]
 st.line_chart(df_plotted2)
 
-filtri = st.multiselect("seleziona le caratteristiche da tenere in considerazione", ['Media mobile 200', 'Media mobile 50', 'Incrocio delle medie', 'RSI'], default = ['Media mobile 200', 'Media mobile 50', 'Incrocio delle medie', 'RSI'] )
+st.write("""
+## Seleziona i parametri che intendi considerare:
+ """)
+filtri = st.multiselect("Utilizza il selettore qui sotto per variare i parametri", ['Media mobile 200', 'Media mobile 50', 'Incrocio delle medie', 'RSI'], default = ['Media mobile 200', 'Media mobile 50', 'Incrocio delle medie', 'RSI'] )
 
 
 if "Media mobile 200" in filtri:
