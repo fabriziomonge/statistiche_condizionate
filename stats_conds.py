@@ -35,7 +35,7 @@ try:
     if Psw == accessi['Password'][Utente]:
         
         st.write("""
-        # Base dell' analisi:
+        ## Base dell' analisi:
         """)
 
         titolo = st.text_input("Inserire il ticker da analizzare", "VTI")   
@@ -45,7 +45,7 @@ try:
     """)
         
         st.write("""
-        # Base dell' analisi:
+        ## Base dell' analisi:
         """)
         
         titolo = ("VTI")
@@ -56,7 +56,7 @@ except:
     """)
     
     st.write("""
-    # Base dell' analisi:
+    ## Base dell' analisi:
     """)
     
     titolo = ("VTI")
