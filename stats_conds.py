@@ -10,6 +10,12 @@ import pandas as pd
 import streamlit as st
 
 
+st.write("""
+# Statistiche condizionate APP 1.0
+L'applicazione consente di calcolare le statistiche di rendimento e volatilità di un titolo o di un indice in base ai parametri scelti dall' operatore
+""")
+
+
 # In[77]:
 
 
