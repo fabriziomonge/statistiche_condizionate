@@ -61,7 +61,7 @@ except:
     
     titolo = ("VTI")
 
-mesi_proiezione = st.number_input("mesi per la proiezione statistica", 1)
+mesi_proiezione = st.number_input("Mesi per la proiezione statistica", 1)
 
 
 # # Scarica la serie storica e disegnala
