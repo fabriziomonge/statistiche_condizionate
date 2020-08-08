@@ -167,8 +167,13 @@ df1 = df.drop(['Close', 'MA200', 'MA50'],1)
 
 # In[88]:
 
+st.write("""
+## Selezione parametri:
+ """)
 
-filtri = st.multiselect("seleziona i filtri da utilizzare", ['Media mobile 200', 'Media mobile 50', 'Incrocio delle medie', 'RSI'], default = ['Media mobile 200', 'Media mobile 50', 'Incrocio delle medie', 'RSI'] )
+st.line_chart(df)
+
+filtri = st.multiselect("seleziona le caratteristiche da tenere in considerazione", ['Media mobile 200', 'Media mobile 50', 'Incrocio delle medie', 'RSI'], default = ['Media mobile 200', 'Media mobile 50', 'Incrocio delle medie', 'RSI'] )
 
 
 if "Media mobile 200" in filtri:
@@ -260,5 +265,12 @@ lista_tot = [ casi_tot, positivi_tot, media_tot, varianza_tot, mediana_tot, pegg
 
 statistiche = pd.DataFrame(lista_sit, index=['casi', 'positivi (%)', 'media (%)', 'varianza (%)', 'mediana (%)', 'peggiore risultato (%)', 'migliore risultato(%)'], columns=['con i parametri attuali'])
 statistiche['nella storia']=lista_tot
+
+st.write("""
+## Statistiche elaborate in base all'attuale condizione:
+ """)
 statistiche
 
+st.write("""
+## DISCLAIMER:
+ """)
