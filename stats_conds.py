@@ -68,12 +68,19 @@ mesi_proiezione = st.number_input("Mesi per la proiezione statistica", 1)
 
 # In[78]:
 
+try:
 
-df = pdr.get_data_yahoo(titolo, start = '1980-1-1')['Close']
-df = df.resample('M').last()
-df = pd.DataFrame(df)
-df['index']=df.index
-df = df.set_index('index',1)
+    df = pdr.get_data_yahoo(titolo, start = '1980-1-1')['Close']
+    df = df.resample('M').last()
+    df = pd.DataFrame(df)
+    df['index']=df.index
+    df = df.set_index('index',1)
+
+except:
+    
+    st.write("""
+    ## Attenzione: il ticker inserito non è stato trovato:
+    """)
 
 
 # In[79]:
