@@ -394,9 +394,9 @@ cono['best(2 deviazione)']= cono.rendimento_medio+cono.volatilità2
 cono['index'] = cono.index
 cono = cono.set_index('index',1)
 
-if st.checkbox('Mostra il cono di volatilità'):
+# if st.checkbox('Mostra il cono di volatilità'):
 
-    st.line_chart(cono.drop(['volatilità','volatilità2'],1))
+#     st.line_chart(cono.drop(['volatilità','volatilità2'],1))
 
 
 st.write("""
