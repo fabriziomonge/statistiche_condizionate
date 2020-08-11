@@ -3,3 +3,4 @@ numpy==1.17.3
 pandas
 pandas_datareader
 xlrd
+pillow
