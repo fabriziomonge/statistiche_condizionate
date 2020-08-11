@@ -333,6 +333,11 @@ statistiche['Nella storia']=lista_tot
 st.write("""
 ## Statistiche elaborate in base all'attuale condizione:
  """)
+
+print("Asset considerato: ", titolo)
+print("Inizio analisi: ",df.index[0])
+print("Fine analisi: ",df.index[len(df)-2])
+
 statistiche
 
 st.write("""
