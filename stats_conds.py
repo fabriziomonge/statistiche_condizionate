@@ -339,6 +339,19 @@ st.write("""Inizio analisi: """,df.index[0])
 st.write("""Fine analisi: """,df.index[len(df)-2])
 st.write("""Mesi proiezione: """,mesi_proiezione)
 
+#trasforma alcune colonne in percentuale
+
+statistiche = statistiche.transpose()
+
+statistiche['Positivi (%)'] = pd.Series(["{0:.2f}%".format(val) for val in statistiche['Positivi (%)']], index = statistiche.index)
+statistiche['Media (%)'] = pd.Series(["{0:.2f}%".format(val) for val in statistiche['Media (%)']], index = statistiche.index)
+statistiche['Varianza (%)'] = pd.Series(["{0:.2f}%".format(val) for val in statistiche['Varianza (%)']], index = statistiche.index)
+statistiche['Mediana (%)'] = pd.Series(["{0:.2f}%".format(val) for val in statistiche['Mediana (%)']], index = statistiche.index)
+statistiche['Peggiore risultato (%)'] = pd.Series(["{0:.2f}%".format(val) for val in statistiche['Peggiore risultato (%)']], index = statistiche.index)
+statistiche['Migliore risultato(%)'] = pd.Series(["{0:.2f}%".format(val) for val in statistiche['Migliore risultato(%)']], index = statistiche.index)
+
+statistiche = statistiche.transpose()
+
 statistiche
 
 st.write("""
