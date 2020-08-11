@@ -337,6 +337,7 @@ st.write("""
 st.write("""Asset considerato: """, titolo)
 st.write("""Inizio analisi: """,df.index[0])
 st.write("""Fine analisi: """,df.index[len(df)-2])
+st.write("""Mesi proiezione: """,mesi_proiezione)
 
 statistiche
 
