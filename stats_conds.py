@@ -103,6 +103,22 @@ def RSI(serie, lenght):
     lista_rsi = list(funzione_df['RSI'])
     return lista_rsi
 
+#definiamo le funzione drawdown
+
+def dd(serie):
+    serief = pd.DataFrame(serie.values, columns = ["prezzo"])
+    lista = []
+    lista2 =[]
+    a1 = serief['prezzo'].values[0]
+    lista.append(a1)
+    lista2.append(0)
+    for i in range (1,len(serief)):
+        a = max((serief['prezzo'][i]),lista[i-1])
+        lista.append(a)
+        dd = ((serief['prezzo'][i])-lista[i])/lista[i]
+        lista2.append(dd)
+    return lista2
+
 
 # # Crea le features
 
@@ -129,6 +145,11 @@ df.loc[df.RSI_F >= 80, 'RSI']=2
 df.loc[df.RSI_F <= 20, 'RSI']=0
 df.RSI = df.RSI.fillna(1)
 # df = df.drop('RSI_F',1)
+
+#calcoliamo il drawdown storico binarizzato
+
+df['DD'] = dd(df.Close)
+df.DD = pd.cut(df.DD, 4, labels=False)
 
 
 # # Crea le labels
@@ -191,14 +212,20 @@ st.write("""
 ## Parametri disponibili per l'analisi statistica:
  """)
 df_plotted = df[['Close','MA200','MA50']]
-st.line_chart(df_plotted)
 df_plotted2 = df[['RSI_F']]
-st.line_chart(df_plotted2)
+df_plotted3 = df[['DD']]
+
+
+if st.checkbox('Mostra gli indiatori'):
+
+    st.line_chart(df_plotted)
+    st.line_chart(df_plotted2)
+    st.line_chart(df_plotted3)
 
 st.write("""
 ## Seleziona i parametri che intendi considerare:
  """)
-filtri = st.multiselect("Utilizza il selettore qui sotto per variare i parametri", ['Media mobile 200', 'Media mobile 50', 'Incrocio delle medie', 'RSI'], default = ['Media mobile 200', 'Media mobile 50', 'Incrocio delle medie', 'RSI'] )
+filtri = st.multiselect("Utilizza il selettore qui sotto per variare i parametri", ['Media mobile 200', 'Media mobile 50', 'Incrocio delle medie', 'RSI', 'Drawdown'], default = ['Media mobile 200', 'Media mobile 50', 'Incrocio delle medie', 'RSI', 'Drawdown'] )
 
 
 if "Media mobile 200" in filtri:
@@ -221,7 +248,10 @@ if "RSI" in filtri:
 else:
     condizione4 = "OFF"
     
-
+if "Drawdown" in filtri:
+    condizione5 = "ON"
+else:
+    condizione5 = "OFF"
 
 
 
@@ -244,9 +274,16 @@ if condizione4 == "ON":
     cond4 = (df1['RSI'].values==df1.tail(1)['RSI'].values)    
 else:
     cond4 = (df1['RSI'].values==df1['RSI'].values)   
+
+if condizione5 == "ON":
+    
+    cond5 = (df1['DD'].values==df1.tail(1)['DD'].values)    
+else:
+    cond5 = (df1['DD'].values==df1['DD'].values)   
+    
     
 
-cond = (cond1&cond2&cond3&cond4)
+cond = (cond1&cond2&cond3&cond4&cond5)
 
 
 # # Filtra il df in base alle condizioni definite sopra
