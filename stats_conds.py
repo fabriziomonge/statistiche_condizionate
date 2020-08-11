@@ -378,9 +378,9 @@ statistiche = statistiche.transpose()
 statistiche
 
 
-st.write("""
-## Cono di volatilità:
- """)
+# st.write("""
+# ## Cono di volatilità:
+#  """)
 
 
 av = media/mesi_proiezione
