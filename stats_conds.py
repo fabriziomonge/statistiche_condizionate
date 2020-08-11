@@ -43,7 +43,7 @@ try:
         A questo link è possibile trovare un elenco dei principali tickers:
         """)
         
-        st.write(https://wp.me/P9LLei-37)
+        st.write('https://wp.me/P9LLei-37')
         
     else:
         st.write("""
