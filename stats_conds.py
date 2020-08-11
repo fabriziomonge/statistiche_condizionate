@@ -79,9 +79,17 @@ try:
 except:
     
     st.write("""
-    ## Attenzione: il ticker inserito non è stato trovato:
+    ## Attenzione: il ticker inserito non è stato trovato!
+    Verrà considerato l'andamento del ticker di default...
     """)
+    
+    df = pdr.get_data_yahoo(titolo, start = '1980-1-1')['Close']
+    df = df.resample('M').last()
+    df = pd.DataFrame(df)
+    df['index']=df.index
+    df = df.set_index('index',1)
 
+    
 
 # In[79]:
 
