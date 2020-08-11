@@ -38,7 +38,13 @@ try:
         ## Base dell' analisi:
         """)
 
-        titolo = st.text_input("Inserire il ticker da analizzare", "VTI")   
+        titolo = st.text_input("Inserire il ticker da analizzare", "VTI")
+        st.write("""
+        A questo link è possibile trovare un elenco dei principali tickers:
+        """)
+        
+        st.write(https://wp.me/P9LLei-37)
+        
     else:
         st.write("""
            In caso di utilizzo senza credenziali non sarà possibile modificare l'asset oggetto di studio.
