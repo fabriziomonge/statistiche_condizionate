@@ -216,7 +216,7 @@ df_plotted2 = df[['RSI_F']]
 df_plotted3 = df[['DD']]
 
 
-if st.checkbox('Mostra gli indiatori'):
+if st.checkbox('Mostra gli indicatori disponibili'):
 
     st.line_chart(df_plotted)
     st.line_chart(df_plotted2)
@@ -334,9 +334,9 @@ st.write("""
 ## Statistiche elaborate in base all'attuale condizione:
  """)
 
-print("Asset considerato: ", titolo)
-print("Inizio analisi: ",df.index[0])
-print("Fine analisi: ",df.index[len(df)-2])
+st.write("""Asset considerato: """, titolo)
+st.write("""Inizio analisi: """,df.index[0])
+st.write("""Fine analisi: """,df.index[len(df)-2])
 
 statistiche
 
