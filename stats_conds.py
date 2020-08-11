@@ -9,6 +9,10 @@ import pandas_datareader as pdr
 import pandas as pd
 import streamlit as st
 
+from PIL import Image
+image = Image.open('statistiche_condizionate.png')
+st.sidebar.image(image, use_column_width=True)
+
 
 st.write("""
 # Statistiche condizionate APP 1.0
