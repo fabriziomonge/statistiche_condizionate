@@ -411,6 +411,9 @@ import matplotlib.pyplot as plt
 plt.hist(df1.return_log, density=True, color = "red", histtype = 'step')
 plt.hist(df2.return_log, density = True, histtype = 'bar')
 
+st.write("""
+## Distribuzione dei rendimenti sull' orizzonte richiesto:
+ """)
 st.pyplot()
 
 st.write("""
