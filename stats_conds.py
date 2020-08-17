@@ -407,7 +407,11 @@ cono = cono.set_index('index',1)
 # if st.checkbox('Mostra il cono di volatilità'):
 
 #     st.line_chart(cono.drop(['volatilità','volatilità2'],1))
+import matplotlib.pyplot as plt
+fig = plt.hist(df1.return_log, density=True, color = "red", histtype = 'step')
+fig = plt.hist(df2.return_log, density = True, histtype = 'bar')
 
+st.pyplot(fig)
 
 st.write("""
 #  
