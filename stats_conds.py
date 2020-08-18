@@ -397,7 +397,7 @@ statistiche
 
 av = media/mesi_proiezione
 
-dev = varianza/mesi_proiezione
+dev = varianza/(mesi_proiezione**(1/2))
 
 
 cono = pd.DataFrame(index=range(mesi_proiezione+1))
@@ -412,15 +412,21 @@ cono['best(2 deviazione)']= cono.rendimento_medio+cono.volatilità2
 cono['index'] = cono.index
 cono = cono.set_index('index',1)
 
-# if st.checkbox('Mostra il cono di volatilità'):
+if st.checkbox('Mostra il cono di volatilità'):
 
-#     st.line_chart(cono.drop(['volatilità','volatilità2'],1))
+    st.line_chart(cono.drop(['volatilità','volatilità2'],1))
+
+
 import matplotlib.pyplot as plt
 plt.hist(df1.return_log*100, density=True, color = "red", histtype = 'step')
 plt.hist(df2.return_log*100, density = True, histtype = 'bar')
 plt.legend(['Storico', 'Attuali condizioni'])
 plt.xlabel('Rendimento (%)')
 plt.ylabel('Frequenza')
+
+st.write("""
+## 
+  """)
 
 if st.checkbox('Mostra la distribuzione dei rendimenti storici'):
 
