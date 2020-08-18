@@ -13,6 +13,13 @@ from PIL import Image
 image = Image.open('statistiche_condizionate.png')
 st.sidebar.image(image, use_column_width=True)
 
+hide_streamlit_style = """
+            <style>
+            
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 
 st.write("""
 # Statistiche condizionate APP 1.0
