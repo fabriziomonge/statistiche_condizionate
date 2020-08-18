@@ -410,7 +410,9 @@ cono = cono.set_index('index',1)
 import matplotlib.pyplot as plt
 plt.hist(df1.return_log, density=True, color = "red", histtype = 'step')
 plt.hist(df2.return_log, density = True, histtype = 'bar')
-
+plt.legend(['Storico', 'Attuali condizioni'])
+plt.xlabel('Rendimento')
+plt.ylabel('Frequenza')
 st.write("""
 ## Distribuzione dei rendimenti sull' orizzonte richiesto:
  """)
