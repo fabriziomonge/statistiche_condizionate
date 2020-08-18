@@ -21,8 +21,9 @@ hide_streamlit_style = """
             """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 
+st.title("Statistiche condizionate APP 1.5")
+
 st.write("""
-# Statistiche condizionate APP 1.0
 L'applicazione consente di calcolare le statistiche di rendimento e volatilità di un titolo o di un indice in base ai parametri scelti dall' operatore
 """)
 
