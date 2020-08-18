@@ -408,15 +408,18 @@ cono = cono.set_index('index',1)
 
 #     st.line_chart(cono.drop(['volatilità','volatilità2'],1))
 import matplotlib.pyplot as plt
-plt.hist(df1.return_log, density=True, color = "red", histtype = 'step')
-plt.hist(df2.return_log, density = True, histtype = 'bar')
+plt.hist(df1.return_log*100, density=True, color = "red", histtype = 'step')
+plt.hist(df2.return_log*100, density = True, histtype = 'bar')
 plt.legend(['Storico', 'Attuali condizioni'])
-plt.xlabel('Rendimento')
+plt.xlabel('Rendimento (%)')
 plt.ylabel('Frequenza')
-st.write("""
-## Distribuzione dei rendimenti sull' orizzonte richiesto:
- """)
-st.pyplot()
+
+if st.checkbox('Mostra la distribuzione dei rendimenti storici'):
+
+    st.write("""
+    ## Distribuzione dei rendimenti sull' orizzonte richiesto:
+    """)
+    st.pyplot()
 
 st.write("""
 #  
