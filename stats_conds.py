@@ -406,8 +406,8 @@ cono['volatilità'] = dev*(cono.index**(1/2))
 cono['volatilità2'] = dev*2*(cono.index**(1/2))
 cono['worst (1 deviazione)']= cono.rendimento_medio-cono.volatilità
 cono['best (1 deviazione)']= cono.rendimento_medio+cono.volatilità
-cono['worst(2 deviazioni)']= cono.rendimento_medio-cono.volatilità2
-cono['best(2 deviazione)']= cono.rendimento_medio+cono.volatilità2
+# cono['worst(2 deviazioni)']= cono.rendimento_medio-cono.volatilità2
+# cono['best(2 deviazione)']= cono.rendimento_medio+cono.volatilità2
 
 cono['index'] = cono.index
 cono = cono.set_index('index',1)
