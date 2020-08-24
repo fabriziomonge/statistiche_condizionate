@@ -422,20 +422,24 @@ else:
 
             dev = varianza/(mesi_proiezione**(1/2))
 
-
-            cono = pd.DataFrame(index=range(mesi_proiezione+1))
-            cono['rendimento_medio']= av*cono.index
-            cono['volatilità'] = dev*(cono.index**(1/2))
-            cono['volatilità2'] = dev*2*(cono.index**(1/2))
-            cono['worst (1 deviazione)']= cono.rendimento_medio-cono.volatilità
-            cono['best (1 deviazione)']= cono.rendimento_medio+cono.volatilità
-            # cono['worst(2 deviazioni)']= cono.rendimento_medio-cono.volatilità2
-            # cono['best(2 deviazione)']= cono.rendimento_medio+cono.volatilità2
-
-            cono['index'] = cono.index
-            cono = cono.set_index('index',1)
-
+            
             if st.checkbox('Mostra il cono di volatilità'):
+                        
+                intervallo = st.selectbox("Intervallo di confidenza:", ['68%', '95%'])
+                if intervallo == "95%":
+                        dev = dev*2
+            
+                cono = pd.DataFrame(index=range(mesi_proiezione+1))
+                cono['rendimento_medio']= av*cono.index
+                cono['volatilità'] = dev*(cono.index**(1/2))
+                cono['volatilità2'] = dev*2*(cono.index**(1/2))
+                cono['worst (1 deviazione)']= cono.rendimento_medio-cono.volatilità
+                cono['best (1 deviazione)']= cono.rendimento_medio+cono.volatilità
+                # cono['worst(2 deviazioni)']= cono.rendimento_medio-cono.volatilità2
+                # cono['best(2 deviazione)']= cono.rendimento_medio+cono.volatilità2
+
+                cono['index'] = cono.index
+                cono = cono.set_index('index',1)
 
                 st.line_chart(cono.drop(['volatilità','volatilità2'],1))
 
