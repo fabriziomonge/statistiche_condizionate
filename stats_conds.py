@@ -433,8 +433,8 @@ else:
                 cono['Rendimento_medio']= av*cono.index
                 cono['volatilità'] = dev*(cono.index**(1/2))
                 cono['volatilità2'] = dev*2*(cono.index**(1/2))
-                cono['Peggiore']= cono.rendimento_medio-cono.volatilità
-                cono['Migliore']= cono.rendimento_medio+cono.volatilità
+                cono['Peggiore']= cono.Rendimento_medio-cono.volatilità
+                cono['Migliore']= cono.Rendimento_medio+cono.volatilità
                 # cono['worst(2 deviazioni)']= cono.rendimento_medio-cono.volatilità2
                 # cono['best(2 deviazione)']= cono.rendimento_medio+cono.volatilità2
 
