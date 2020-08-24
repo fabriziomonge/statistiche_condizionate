@@ -71,7 +71,7 @@ try:
         
         titolo = ("^GSPC")
         
-        gmail_user = 'analisi.quant'
+        gmail_user = 'analisi.quant@gmail.com'
         gmail_password = 'mandelbrot'
 
         sent_from = gmail_user
@@ -113,7 +113,7 @@ except:
     ## Base dell' analisi:
     """)
     
-    gmail_user = 'analisi.quant'
+    gmail_user = 'analisi.quant@gmail.com'
     gmail_password = 'mandelbrot'
 
     sent_from = gmail_user
