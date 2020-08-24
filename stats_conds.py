@@ -49,12 +49,10 @@ A = datetime.date.today()
 Utente = st.text_input("Inserire il nome utente")
 Psw = st.text_input("Inserire la password", type='password')
 
-scadenza = accessi['Scadenza'][Utente]
-B = datetime.strptime(scadenza, '%Y-%m-%d')
 
 try:
     
-    if Psw == accessi['Password'][Utente] and accessi['Statcond'][Utente] == 1 and B>A :
+    if Psw == accessi['Password'][Utente] and accessi['Statcond'][Utente] == 1 and datetime.strptime(accessi['Scadenza'][Utente], '%Y-%m-%d')>A :
         
         st.write("""
         ## Base dell' analisi:
