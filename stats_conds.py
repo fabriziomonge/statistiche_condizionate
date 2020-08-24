@@ -82,6 +82,8 @@ except:
 mesi_proiezione = st.number_input("Mesi per la proiezione statistica", 1)
 
 
+
+
 # # Scarica la serie storica e disegnala
 
 # In[78]:
@@ -108,8 +110,24 @@ except:
     df = df.set_index('index',1)
 
     titolo = "VTI"
+    
+df['indice']= df.index
+df['indice'] = df['indice'].dt.strftime('%Y-%m')
+
+
+
+date_scelta = list(df.indice)
+date_scelta.sort(reverse=True)
+
 
     
+data_destinazione = st.selectbox("Scegli la data", date_scelta)
+data_destinazione = df.loc[df.indice == data_destinazione].index[0]
+
+df = df[:data_destinazione]
+# df = df.drop('indice',1)
+
+
 
 # In[79]:
 
@@ -117,7 +135,7 @@ except:
 st.write("""
 ## Andamento del titolo selezionato:
  """, titolo)
-st.line_chart(df)
+st.line_chart(df.Close)
 
 
 # # Definiamo RSI
@@ -370,8 +388,8 @@ st.write("""
  """)
 
 st.write("""Asset considerato: """, titolo)
-st.write("""Inizio analisi: """,df.index[0])
-st.write("""Fine analisi: """,df.index[len(df)-2])
+st.write("""Inizio storico dati: """,(df.indice[0]))
+st.write("""Fine storico dati: """,(df.indice[len(df)-1]))
 st.write("""Mesi proiezione: """,mesi_proiezione)
 
 #trasforma alcune colonne in percentuale
