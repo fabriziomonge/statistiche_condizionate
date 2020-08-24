@@ -78,7 +78,7 @@ try:
         to = ['fabrizio.monge@gmail.com']
         subject = 'Richiesta di attivazione account di prova'
 
-        st.sidebar.markdown("Non hai le credenziali di accesso? Richiedi un account di prova")
+        st.sidebar.markdown("** Non hai le credenziali di accesso? Richiedi un account di prova **")
         mittente = st.sidebar.text_input("inserisci il tuo indirizzo email")
         butt = st.sidebar.button("Invia la richiesta")
 
@@ -120,7 +120,7 @@ except:
     to = ['fabrizio.monge@gmail.com']
     subject = 'Richiesta di attivazione account di prova'
 
-    st.sidebar.markdown("Non hai le credenziali di accesso? Richiedi un account di prova")
+    st.sidebar.markdown("** Non hai le credenziali di accesso? Richiedi un account di prova **")
     mittente = st.sidebar.text_input("inserisci il tuo indirizzo email")
     butt = st.sidebar.button("Invia la richiesta")
 
