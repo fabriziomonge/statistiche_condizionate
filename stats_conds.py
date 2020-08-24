@@ -62,7 +62,7 @@ try:
         
     else:
         st.write("""
-           In caso di utilizzo senza credenziali non sarà possibile modificare l'asset oggetto di studio.
+           Credenziali errate: non sarà possibile modificare l'asset oggetto di studio.
     """)
         
         st.write("""
