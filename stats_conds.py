@@ -50,7 +50,7 @@ try:
         ## Base dell' analisi:
         """)
 
-        titolo = st.text_input("Inserire il ticker da analizzare", "VTI")
+        titolo = st.text_input("Inserire il ticker da analizzare", "^GSPC")
         st.write("""
         A questo link è possibile trovare un elenco dei principali tickers:
         """)
@@ -66,7 +66,7 @@ try:
         ## Base dell' analisi:
         """)
         
-        titolo = ("VTI")
+        titolo = ("^GSPC")
 except:
     
     st.write("""
@@ -77,9 +77,9 @@ except:
     ## Base dell' analisi:
     """)
     
-    titolo = ("VTI")
+    titolo = ("^GSPC")
 
-mesi_proiezione = st.number_input("Mesi per la proiezione statistica", 1)
+mesi_proiezione = st.number_input("Mesi per la proiezione statistica", 60)
 
 
 
@@ -103,13 +103,13 @@ except:
     Verrà considerato l'andamento del ticker di default...
     """)
     
-    df = pdr.get_data_yahoo('VTI', start = '1980-1-1')['Close']
+    df = pdr.get_data_yahoo('^GSPC', start = '1980-1-1')['Close']
     df = df.resample('M').last()
     df = pd.DataFrame(df)
     df['index']=df.index
     df = df.set_index('index',1)
 
-    titolo = "VTI"
+    titolo = "^GSPC"
     
 df['indice']= df.index
 df['indice'] = df['indice'].dt.strftime('%Y-%m')
