@@ -6,4 +6,4 @@ xlrd
 pillow
 matplotlib
 zeep
-smtplib
+
