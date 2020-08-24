@@ -45,12 +45,12 @@ from datetime import datetime
 import datetime
 A = datetime.date.today()
 
-scadenza = accessi['Scadenza'][Utente]
-B = datetime.strptime(scadenza, '%Y-%m-%d')
-
 
 Utente = st.text_input("Inserire il nome utente")
 Psw = st.text_input("Inserire la password", type='password')
+
+scadenza = accessi['Scadenza'][Utente]
+B = datetime.strptime(scadenza, '%Y-%m-%d')
 
 try:
     
