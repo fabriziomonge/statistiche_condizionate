@@ -202,6 +202,7 @@ df.RSI = df.RSI.fillna(1)
 #calcoliamo il drawdown storico binarizzato
 
 df['DD'] = dd(df.Close)
+df['DD_1'] = df['DD']
 df.DD = pd.cut(df.DD, 4, labels=False)
 
 
@@ -224,49 +225,13 @@ df['return_log']=np.log(df.Close.shift(-mesi_proiezione)/df.Close)
 df1 = df.drop(['Close', 'MA200', 'MA50'],1)
 
 
-# # Calcola la feature importance <<< da fare
-# https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html
-
-# In[86]:
-
-
-# from sklearn.ensemble import RandomForestRegressor
-
-# # df1_ = df1
-
-# # df1_['return+1'] = df1_['return+1'].fillna(1)
-# # df1_['return'] = df1_['return'].fillna(0)
-
-# regressor = RandomForestRegressor(random_state=0)
-# X = np.array(df1.dropna().drop(['return', 'return+1', 'return_log'],1))
-# y = np.array(df1.dropna()['return'])
-# regressor.fit(X,y)
-# importanza = pd.DataFrame(regressor.feature_importances_, columns=['importanza'], index=list(df1.columns)[:len(df1.columns)-3])
-# previsti = regressor.predict(X)
-# df_risultati = pd.DataFrame(regressor.predict(X), columns=['previsti'])
-# df_risultati['reali']=y
-
-
-# In[87]:
-
-
-# importanza['index']=importanza.index
-# importanza = importanza.set_index('index', drop=True)
-# st.bar_chart(importanza)
-
-
-# # Condizioni da utilizzare
-
-# streamlit.multiselect(element, label, options, default=None, format_func=<class 'str'>, key=None)
-
-# In[88]:
 
 st.write("""
 ## Parametri disponibili per l'analisi statistica:
  """)
 df_plotted = df[['Close','MA200','MA50']]
-df_plotted2 = df[['RSI_F']]
-df_plotted3 = df[['DD']]
+df_plotted2 = df[['RSI_F', 'RSI']]
+df_plotted3 = df[['DD', 'DD_1]]
 
 
 if st.checkbox('Mostra gli indicatori disponibili'):
