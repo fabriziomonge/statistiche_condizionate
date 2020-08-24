@@ -42,7 +42,9 @@ url = 'http://www.sphereresearch.net/Notebooks/Accessi.xlsx'
 accessi = pd.read_excel(url)
 accessi = accessi.set_index('User', drop = True)
 from datetime import datetime
-A = datetime.datetime.today()
+import datetime
+A = datetime.date.today()
+
 scadenza = accessi['Scadenza'][Utente]
 B = datetime.strptime(scadenza, '%Y-%m-%d')
 
