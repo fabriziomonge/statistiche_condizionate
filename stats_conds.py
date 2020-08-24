@@ -41,13 +41,18 @@ L'applicazione consente di calcolare le statistiche di rendimento e volatilità 
 url = 'http://www.sphereresearch.net/Notebooks/Accessi.xlsx'
 accessi = pd.read_excel(url)
 accessi = accessi.set_index('User', drop = True)
+from datetime import datetime
+A == datetime.datetime.today()
+scadenza = accessi['Scadenza'][Utente]
+B = datetime.strptime(scadenza, '%Y-%m-%d')
+
 
 Utente = st.text_input("Inserire il nome utente")
 Psw = st.text_input("Inserire la password", type='password')
 
 try:
     
-    if Psw == accessi['Password'][Utente] and accessi['Statcond'][Utente] == 1 :
+    if Psw == accessi['Password'][Utente] and accessi['Statcond'][Utente] == 1 and B>A :
         
         st.write("""
         ## Base dell' analisi:
