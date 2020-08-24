@@ -80,7 +80,7 @@ except:
     
     titolo = ("^GSPC")
 
-mesi_proiezione = st.number_input("Mesi per la proiezione statistica", 60)
+mesi_proiezione = st.number_input("Mesi per la proiezione statistica", min_value=0, max_value= None, value=60)
 
 
 
