@@ -194,8 +194,8 @@ df['MA 50 > MA200'] = np.sign(df.MA50-df.MA200)
 
 
 df['RSI_F'] = RSI(df.Close, 14)
-df.loc[df.RSI_F >= 75, 'RSI']=2
-df.loc[df.RSI_F <= 25, 'RSI']=0
+df.loc[df.RSI_F >= 80, 'RSI']=2
+df.loc[df.RSI_F <= 30, 'RSI']=0
 df.RSI = df.RSI.fillna(1)
 # df = df.drop('RSI_F',1)
 
@@ -346,112 +346,117 @@ cond = (cond1&cond2&cond3&cond4&cond5)
 
 df2 = df1.loc[cond]
 
-
-# # Restituisci le statistiche
-
-# In[90]:
-
-
-print("STATISTICHE COMPARATE. Filtri applicati: ", filtri)
-print("")
-
-casi=  len(df2.dropna())
-casi_tot = len(df1.dropna())
-positivi_ass = round((len(df2.dropna().loc[df2.dropna()['return']>=0])))
-positivi = round((len(df2.dropna().loc[df2.dropna()['return']>=0]))/len(df2.dropna())*100,2)
-positivi_tot_ass =round((len(df1.dropna().loc[df1.dropna()['return']>0])))
-positivi_tot =round((len(df1.dropna().loc[df1.dropna()['return']>0]))/len(df1.dropna())*100,2)
-media = round(df2.dropna()['return_log'].mean()*100,2) 
-media_tot = round(df1.dropna()['return_log'].mean()*100,2)
-
-varianza = round(df2.dropna()['return_log'].std()*100,2) 
-varianza_tot=round(df1.dropna()['return_log'].std()*100,2)
-
-
-mediana = round(df2.dropna()['return_log'].median()*100,2) 
-mediana_tot = round(df1.dropna()['return_log'].median()*100,2)
-
-peggiore = round(df2.dropna()['return'].min()*100,2) 
-peggiore_tot = round(df1.dropna()['return'].min()*100,2)
-
-migliore = round(df2.dropna()['return'].max()*100,2) 
-migliore_tot=round(df1.dropna()['return'].max()*100,2)
-
-lista_sit = [ casi, positivi_ass, positivi, media, varianza, mediana, peggiore, migliore]
-lista_tot = [ casi_tot,positivi_tot_ass, positivi_tot, media_tot, varianza_tot, mediana_tot, peggiore_tot, migliore_tot]
-
-statistiche = pd.DataFrame(lista_sit, index=['Casi', 'Di cui positivi', 'Positivi (%)', 'Media (%)', 'Varianza (%)', 'Mediana (%)', 'Peggiore risultato (%)', 'Migliore risultato(%)'], columns=['Con i parametri attuali'])
-statistiche['Nella storia']=lista_tot
-
-st.write("""
-## Statistiche elaborate in base all'attuale condizione:
+if len(df2)==0:
+ st.write("""
+ ## La condizione attuale, come definita dai parematri correnti, non si è mai verificata. Prova ad eliminare alcuni parametri:
  """)
 
-st.write("""Asset considerato: """, titolo)
-st.write("""Inizio storico dati: """,(df.indice[0]))
-st.write("""Fine storico dati: """,(df.indice[len(df)-1]))
-st.write("""Mesi proiezione: """,mesi_proiezione)
+else:
+            # # Restituisci le statistiche
 
-#trasforma alcune colonne in percentuale
-
-statistiche = statistiche.transpose()
-
-statistiche['Positivi (%)'] = pd.Series(["{0:.2f}%".format(val) for val in statistiche['Positivi (%)']], index = statistiche.index)
-statistiche['Media (%)'] = pd.Series(["{0:.2f}%".format(val) for val in statistiche['Media (%)']], index = statistiche.index)
-statistiche['Varianza (%)'] = pd.Series(["{0:.2f}%".format(val) for val in statistiche['Varianza (%)']], index = statistiche.index)
-statistiche['Mediana (%)'] = pd.Series(["{0:.2f}%".format(val) for val in statistiche['Mediana (%)']], index = statistiche.index)
-statistiche['Peggiore risultato (%)'] = pd.Series(["{0:.2f}%".format(val) for val in statistiche['Peggiore risultato (%)']], index = statistiche.index)
-statistiche['Migliore risultato(%)'] = pd.Series(["{0:.2f}%".format(val) for val in statistiche['Migliore risultato(%)']], index = statistiche.index)
-
-statistiche = statistiche.transpose()
-
-statistiche
+            # In[90]:
 
 
-# st.write("""
-# ## Cono di volatilità:
-#  """)
+            print("STATISTICHE COMPARATE. Filtri applicati: ", filtri)
+            print("")
+
+            casi=  len(df2.dropna())
+            casi_tot = len(df1.dropna())
+            positivi_ass = round((len(df2.dropna().loc[df2.dropna()['return']>=0])))
+            positivi = round((len(df2.dropna().loc[df2.dropna()['return']>=0]))/len(df2.dropna())*100,2)
+            positivi_tot_ass =round((len(df1.dropna().loc[df1.dropna()['return']>0])))
+            positivi_tot =round((len(df1.dropna().loc[df1.dropna()['return']>0]))/len(df1.dropna())*100,2)
+            media = round(df2.dropna()['return_log'].mean()*100,2) 
+            media_tot = round(df1.dropna()['return_log'].mean()*100,2)
+
+            varianza = round(df2.dropna()['return_log'].std()*100,2) 
+            varianza_tot=round(df1.dropna()['return_log'].std()*100,2)
 
 
-av = media/mesi_proiezione
+            mediana = round(df2.dropna()['return_log'].median()*100,2) 
+            mediana_tot = round(df1.dropna()['return_log'].median()*100,2)
 
-dev = varianza/(mesi_proiezione**(1/2))
+            peggiore = round(df2.dropna()['return'].min()*100,2) 
+            peggiore_tot = round(df1.dropna()['return'].min()*100,2)
+
+            migliore = round(df2.dropna()['return'].max()*100,2) 
+            migliore_tot=round(df1.dropna()['return'].max()*100,2)
+
+            lista_sit = [ casi, positivi_ass, positivi, media, varianza, mediana, peggiore, migliore]
+            lista_tot = [ casi_tot,positivi_tot_ass, positivi_tot, media_tot, varianza_tot, mediana_tot, peggiore_tot, migliore_tot]
+
+            statistiche = pd.DataFrame(lista_sit, index=['Casi', 'Di cui positivi', 'Positivi (%)', 'Media (%)', 'Varianza (%)', 'Mediana (%)', 'Peggiore risultato (%)', 'Migliore risultato(%)'], columns=['Con i parametri attuali'])
+            statistiche['Nella storia']=lista_tot
+
+            st.write("""
+            ## Statistiche elaborate in base all'attuale condizione:
+             """)
+
+            st.write("""Asset considerato: """, titolo)
+            st.write("""Inizio storico dati: """,(df.indice[0]))
+            st.write("""Fine storico dati: """,(df.indice[len(df)-1]))
+            st.write("""Mesi proiezione: """,mesi_proiezione)
+
+            #trasforma alcune colonne in percentuale
+
+            statistiche = statistiche.transpose()
+
+            statistiche['Positivi (%)'] = pd.Series(["{0:.2f}%".format(val) for val in statistiche['Positivi (%)']], index = statistiche.index)
+            statistiche['Media (%)'] = pd.Series(["{0:.2f}%".format(val) for val in statistiche['Media (%)']], index = statistiche.index)
+            statistiche['Varianza (%)'] = pd.Series(["{0:.2f}%".format(val) for val in statistiche['Varianza (%)']], index = statistiche.index)
+            statistiche['Mediana (%)'] = pd.Series(["{0:.2f}%".format(val) for val in statistiche['Mediana (%)']], index = statistiche.index)
+            statistiche['Peggiore risultato (%)'] = pd.Series(["{0:.2f}%".format(val) for val in statistiche['Peggiore risultato (%)']], index = statistiche.index)
+            statistiche['Migliore risultato(%)'] = pd.Series(["{0:.2f}%".format(val) for val in statistiche['Migliore risultato(%)']], index = statistiche.index)
+
+            statistiche = statistiche.transpose()
+
+            statistiche
 
 
-cono = pd.DataFrame(index=range(mesi_proiezione+1))
-cono['rendimento_medio']= av*cono.index
-cono['volatilità'] = dev*(cono.index**(1/2))
-cono['volatilità2'] = dev*2*(cono.index**(1/2))
-cono['worst (1 deviazione)']= cono.rendimento_medio-cono.volatilità
-cono['best (1 deviazione)']= cono.rendimento_medio+cono.volatilità
-# cono['worst(2 deviazioni)']= cono.rendimento_medio-cono.volatilità2
-# cono['best(2 deviazione)']= cono.rendimento_medio+cono.volatilità2
-
-cono['index'] = cono.index
-cono = cono.set_index('index',1)
-
-if st.checkbox('Mostra il cono di volatilità'):
-
-    st.line_chart(cono.drop(['volatilità','volatilità2'],1))
+            # st.write("""
+            # ## Cono di volatilità:
+            #  """)
 
 
-import matplotlib.pyplot as plt
-plt.hist(df1.return_log*100, density=True, color = "red", histtype = 'step')
-plt.hist(df2.return_log*100, density = True, histtype = 'bar')
-plt.legend(['Storico', 'Attuali condizioni'])
-plt.xlabel('Rendimento (%)')
-plt.ylabel('Frequenza')
+            av = media/mesi_proiezione
 
-st.write("""
-## 
-  """)
+            dev = varianza/(mesi_proiezione**(1/2))
 
-if st.checkbox('Mostra la distribuzione dei rendimenti storici'):
 
-    st.write("""
-    ## Distribuzione dei rendimenti sull' orizzonte richiesto:
-    """)
-    st.pyplot()
+            cono = pd.DataFrame(index=range(mesi_proiezione+1))
+            cono['rendimento_medio']= av*cono.index
+            cono['volatilità'] = dev*(cono.index**(1/2))
+            cono['volatilità2'] = dev*2*(cono.index**(1/2))
+            cono['worst (1 deviazione)']= cono.rendimento_medio-cono.volatilità
+            cono['best (1 deviazione)']= cono.rendimento_medio+cono.volatilità
+            # cono['worst(2 deviazioni)']= cono.rendimento_medio-cono.volatilità2
+            # cono['best(2 deviazione)']= cono.rendimento_medio+cono.volatilità2
+
+            cono['index'] = cono.index
+            cono = cono.set_index('index',1)
+
+            if st.checkbox('Mostra il cono di volatilità'):
+
+                st.line_chart(cono.drop(['volatilità','volatilità2'],1))
+
+
+            import matplotlib.pyplot as plt
+            plt.hist(df1.return_log*100, density=True, color = "red", histtype = 'step')
+            plt.hist(df2.return_log*100, density = True, histtype = 'bar')
+            plt.legend(['Storico', 'Attuali condizioni'])
+            plt.xlabel('Rendimento (%)')
+            plt.ylabel('Frequenza')
+
+            st.write("""
+            ## 
+              """)
+
+            if st.checkbox('Mostra la distribuzione dei rendimenti storici'):
+
+                st.write("""
+                ## Distribuzione dei rendimenti sull' orizzonte richiesto:
+                """)
+                st.pyplot()
 
 st.write("""
 #  
