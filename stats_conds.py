@@ -103,23 +103,23 @@ except:
      LOGIN = client.service.Login("fabrizio.monge@gmail.com", "PMuxLBzkFvRib21")
      TOK = LOGIN.LOGIN_RESPONSE.token
 
-      A = client.service.GetHistoryFromDate(TOK,"SP", titolo,'1980-1-1', "")
-      B = client.service.GetSymbol(TOK,"SP", titolo)
-      try:
-         length = len(A.QUOTES2)
-      except:
-         length= 0
+     A = client.service.GetHistoryFromDate(TOK,"SP", titolo,'1980-1-1', "")
+     B = client.service.GetSymbol(TOK,"SP", titolo)
+     try:
+        length = len(A.QUOTES2)
+     except:
+        length= 0
 
-       lista1=[]
-       lista2=[]
+      lista1=[]
+      lista2=[]
 
-        for t in range (length):
-           data = A.QUOTES2[t].d
-           prezzo = A.QUOTES2[t].c
-           lista1.append(data)
-           lista2.append(prezzo)
+       for t in range (length):
+          data = A.QUOTES2[t].d
+          prezzo = A.QUOTES2[t].c
+          lista1.append(data)
+          lista2.append(prezzo)
 
-         df = pd.DataFrame(lista2, index = lista1, columns=[titolo])
+        df = pd.DataFrame(lista2, index = lista1, columns=[titolo])
             
 #     except:
             
