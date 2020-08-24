@@ -430,11 +430,11 @@ else:
                         dev = dev*2
             
                 cono = pd.DataFrame(index=range(mesi_proiezione+1))
-                cono['rendimento_medio']= av*cono.index
+                cono['Rendimento_medio']= av*cono.index
                 cono['volatilità'] = dev*(cono.index**(1/2))
                 cono['volatilità2'] = dev*2*(cono.index**(1/2))
-                cono['worst (1 deviazione)']= cono.rendimento_medio-cono.volatilità
-                cono['best (1 deviazione)']= cono.rendimento_medio+cono.volatilità
+                cono['Peggiore']= cono.rendimento_medio-cono.volatilità
+                cono['Migliore']= cono.rendimento_medio+cono.volatilità
                 # cono['worst(2 deviazioni)']= cono.rendimento_medio-cono.volatilità2
                 # cono['best(2 deviazione)']= cono.rendimento_medio+cono.volatilità2
 
