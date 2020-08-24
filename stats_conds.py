@@ -8,6 +8,7 @@ import numpy as np
 import pandas_datareader as pdr
 import pandas as pd
 import streamlit as st
+from zeep import Client
 
 from PIL import Image
 image = Image.open('statistiche_condizionate.png')
@@ -50,7 +51,7 @@ try:
         ## Base dell' analisi:
         """)
 
-        titolo = st.text_input("Inserire il ticker da analizzare", "^GSPC")
+        titolo = st.text_input("Inserire il ticker/ISIN da analizzare", "^GSPC")
         st.write("""
         A questo link è possibile trovare un elenco dei principali tickers:
         """)
@@ -98,43 +99,48 @@ try:
 
 except:
             
-#     try:
-     client = Client('http://ws.bbfinance.net/_bnb_ws/bnb_ws.wsdl') #4G58NHO2VNH3RJD9
-     LOGIN = client.service.Login("fabrizio.monge@gmail.com", "PMuxLBzkFvRib21")
-     TOK = LOGIN.LOGIN_RESPONSE.token
-
-     A = client.service.GetHistoryFromDate(TOK,"SP", titolo,'1980-1-1', "")
-     B = client.service.GetSymbol(TOK,"SP", titolo)
      try:
-        length = len(A.QUOTES2)
+         client = Client('http://ws.bbfinance.net/_bnb_ws/bnb_ws.wsdl') #4G58NHO2VNH3RJD9
+         LOGIN = client.service.Login("fabrizio.monge@gmail.com", "PMuxLBzkFvRib21")
+         TOK = LOGIN.LOGIN_RESPONSE.token
+
+         A = client.service.GetHistoryFromDate(TOK,"SP", titolo,'1980-1-1', "")
+         B = client.service.GetSymbol(TOK,"SP", titolo)
+         
+         length = len(A.QUOTES2)
+         
+
+         lista1=[]
+         lista2=[]
+
+         for t in range (length):
+             data = A.QUOTES2[t].d
+             prezzo = A.QUOTES2[t].c
+             lista1.append(data)
+             lista2.append(prezzo)
+
+         df = pd.DataFrame(lista2, index = lista1, columns=['Close'])
+         df.index = pd.to_datetime(df.index)
+         df = df.resample('M').last()
+         df['index']=df.index
+         df = df.set_index('index',1)
+        
+         
+     
      except:
-        length= 0
-
-      lista1=[]
-      lista2=[]
-
-       for t in range (length):
-          data = A.QUOTES2[t].d
-          prezzo = A.QUOTES2[t].c
-          lista1.append(data)
-          lista2.append(prezzo)
-
-        df = pd.DataFrame(lista2, index = lista1, columns=[titolo])
             
-#     except:
-            
-#               st.write("""
-#               ## Attenzione: il ticker inserito non è stato trovato!
-#               Verrà considerato l'andamento del ticker di default...
-#               """)
+              st.write("""
+              ## Attenzione: il ticker inserito non è stato trovato!
+              Verrà considerato l'andamento del ticker di default...
+              """)
     
-#               df = pdr.get_data_yahoo('^GSPC', start = '1980-1-1')['Close']
-#               df = df.resample('M').last()
-#               df = pd.DataFrame(df)
-#               df['index']=df.index
-#               df = df.set_index('index',1)
+              df = pdr.get_data_yahoo('^GSPC', start = '1980-1-1')['Close']
+              df = df.resample('M').last()
+              df = pd.DataFrame(df)
+              df['index']=df.index
+              df = df.set_index('index',1)
 
-#               titolo = "^GSPC"
+              titolo = "^GSPC"
     
 df['indice']= df.index
 df['indice'] = df['indice'].dt.strftime('%Y-%m')
