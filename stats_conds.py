@@ -346,7 +346,7 @@ cond = (cond1&cond2&cond3&cond4&cond5)
 
 df2 = df1.loc[cond]
 
-if len(df2)==0:
+if len(df2.dropna())==0:
  st.write("""
  ## La condizione attuale, come definita dai parematri correnti, non si è mai verificata. Prova ad eliminare alcuni parametri:
  """)
