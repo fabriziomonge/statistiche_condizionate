@@ -52,7 +52,7 @@ Psw = st.text_input("Inserire la password", type='password')
 
 try:
     
-    if Psw == accessi['Password'][Utente] and accessi['Statcond'][Utente] == 1 and accessi['Scadenza'][Utente], '%Y-%m-%d'>A :
+    if Psw == accessi['Password'][Utente] and accessi['Statcond'][Utente] == 1 and accessi['Scadenza'][Utente] > A :
         
         st.write("""
         ## Base dell' analisi:
