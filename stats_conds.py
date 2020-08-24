@@ -8,6 +8,7 @@ import numpy as np
 import pandas_datareader as pdr
 import pandas as pd
 import streamlit as st
+import smtplib
 from zeep import Client
 
 from PIL import Image
