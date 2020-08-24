@@ -194,8 +194,8 @@ df['MA 50 > MA200'] = np.sign(df.MA50-df.MA200)
 
 
 df['RSI_F'] = RSI(df.Close, 14)
-df.loc[df.RSI_F >= 80, 'RSI']=2
-df.loc[df.RSI_F <= 20, 'RSI']=0
+df.loc[df.RSI_F >= 75, 'RSI']=2
+df.loc[df.RSI_F <= 25, 'RSI']=0
 df.RSI = df.RSI.fillna(1)
 # df = df.drop('RSI_F',1)
 
