@@ -231,7 +231,7 @@ st.write("""
  """)
 df_plotted = df[['Close','MA200','MA50']]
 df_plotted2 = df[['RSI_F', 'RSI']]
-df_plotted3 = df[['DD', 'DD_1]]
+df_plotted3 = df[['DD', 'DD_1']]
 
 
 if st.checkbox('Mostra gli indicatori disponibili'):
