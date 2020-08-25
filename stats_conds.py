@@ -67,7 +67,7 @@ try:
         
     else:
         st.write("""
-           Credenziali errate: non sarà possibile modificare l'asset oggetto di studio.
+           ** Credenziali errate o scadute: non sarà possibile modificare l'asset oggetto di studio. **
     """)
         
         st.write("""
