@@ -290,7 +290,7 @@ if st.checkbox('Mostra gli indicatori disponibili'):
 st.write("""
 ## Seleziona i parametri che intendi considerare:
  """)
-filtri = st.multiselect("Utilizza il selettore qui sotto per variare i parametri", ['Media mobile 200', 'Media mobile 50', 'Incrocio delle medie', 'RSI', 'Drawdown'], default = ['Media mobile 200', 'Media mobile 50', 'Incrocio delle medie', 'RSI', 'Drawdown'] )
+filtri = st.multiselect("Utilizza il selettore qui sotto per variare i parametri", ['Media mobile 200', 'Media mobile 50', 'Incrocio delle medie', 'RSI', 'Drawdown'], default = ['Incrocio delle medie', 'RSI', 'Drawdown'] )
 
 
 if "Media mobile 200" in filtri:
