@@ -27,7 +27,7 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 st.title("Statistiche condizionate APP 1.5")
 
 st.write("""
-L'applicazione consente di calcolare le statistiche di rendimento e volatilità di un titolo o di un indice in base ai parametri scelti dall' operatore
+** L'applicazione consente di calcolare le statistiche di rendimento e volatilità di un titolo, di un indice o di un fondo in base ai parametri scelti dall' operatore **
 """)
 
 
