@@ -77,7 +77,7 @@ try:
         titolo = ("^GSPC")
         
         # immagine credenziali qui
-        credenziali = Image.open('credenziali.png')
+        credenziali = Image.open('credenziali.gif')
         st.sidebar.image(credenziali, use_column_width=True)
 
 except:
@@ -91,7 +91,7 @@ except:
     """)
     
     # immagine credenziali qui
-    credenziali = Image.open('credenziali.png')
+    credenziali = Image.open('credenziali.gif')
     st.sidebar.image(credenziali, use_column_width=True)
     
     titolo = ("^GSPC")
