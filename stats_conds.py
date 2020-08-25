@@ -13,7 +13,7 @@ import smtplib
 
 
 from PIL import Image
-image = Image.open('statistiche_condizionate.png')
+image = Image.open('statistiche_condizionate1.png')
 st.sidebar.image(image, use_column_width=True)
 
 hide_streamlit_style = """
