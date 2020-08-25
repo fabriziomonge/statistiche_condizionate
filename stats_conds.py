@@ -76,38 +76,10 @@ try:
         
         titolo = ("^GSPC")
         
-        gmail_user = 'analisi.quant@gmail.com'
-        gmail_password = 'mandelbrot'
+        # immagine credenziali qui
+        credenziali = Image.open('credenziali.png')
+        st.sidebar.image(credenziali, use_column_width=True)
 
-        sent_from = gmail_user
-        to = ['fabrizio.monge@gmail.com']
-        subject = 'Richiesta di attivazione account di prova'
-
-        st.sidebar.markdown("** Non hai le credenziali di accesso? Richiedi un account di prova **")
-        mittente = st.sidebar.text_input("inserisci il tuo indirizzo email")
-        butt = st.sidebar.button("Invia la richiesta")
-
-        if butt == True:
-            body = "L'account: -"+mittente+" "+"- Desidera attivare un account di prova"
-
-            email_text = """\
-            From: %s
-            To: %s
-            Subject: %s
-
-            %s
-            """ % (sent_from, ", ".join(to), subject, body)
-
-            try:
-                server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-                server.ehlo()
-                server.login(gmail_user, gmail_password)
-                server.sendmail(sent_from, to, email_text)
-                server.close()
-
-                st.sidebar.markdown('Richiesta inoltrata, grazie!')
-            except:
-                st.sidebar.markdown('Non è possibile inviare la richiesta, verifica la tua email')
 except:
     
     st.write("""
@@ -118,38 +90,9 @@ except:
     ## Base dell' analisi:
     """)
     
-    gmail_user = 'analisi.quant@gmail.com'
-    gmail_password = 'mandelbrot'
-
-    sent_from = gmail_user
-    to = ['fabrizio.monge@gmail.com']
-    subject = 'Richiesta di attivazione account di prova'
-
-    st.sidebar.markdown("** Non hai le credenziali di accesso? Richiedi un account di prova **")
-    mittente = st.sidebar.text_input("inserisci il tuo indirizzo email")
-    butt = st.sidebar.button("Invia la richiesta")
-
-    if butt == True:
-        body = "L'account: -"+mittente+" "+"- Desidera attivare un account di prova"
-
-        email_text = """\
-        From: %s
-        To: %s
-        Subject: %s
-
-        %s
-        """ % (sent_from, ", ".join(to), subject, body)
-
-        try:
-            server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-            server.ehlo()
-            server.login(gmail_user, gmail_password)
-            server.sendmail(sent_from, to, email_text)
-            server.close()
-
-            st.sidebar.markdown('Richiesta inoltrata, grazie!')
-        except:
-            st.sidebar.markdown('Non è possibile inviare la richiesta, verifica la tua email')
+    # immagine credenziali qui
+    credenziali = Image.open('credenziali.png')
+    st.sidebar.image(credenziali, use_column_width=True)
     
     titolo = ("^GSPC")
 
