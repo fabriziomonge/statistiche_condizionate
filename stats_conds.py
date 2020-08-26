@@ -67,9 +67,11 @@ try:
         """)
         
         st.write('https://wp.me/P9LLei-37')
-            
-#         residuo = (accessi['Scadenza'][Utente] - A).days
-#         st.sidebar.markdown("Il tuo abbonamento scade tra: ", residuo, " giorni")
+        try:
+            residuo = (accessi['Scadenza'][Utente] - A)
+        except:
+            residuo = 103
+            st.sidebar.markdown("Il tuo abbonamento scade tra: ", residuo, " giorni")
         
     else:
         st.write("""
