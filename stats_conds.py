@@ -71,7 +71,7 @@ try:
             residuo = (accessi['Scadenza'][Utente] - A)
         except:
             residuo = 103
-            st.sidebar.markdown("Il tuo abbonamento scade tra: ", residuo, " giorni")
+            st.sidebar.markdown(residuo)
         
     else:
         st.write("""
