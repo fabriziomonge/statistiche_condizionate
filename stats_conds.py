@@ -80,7 +80,7 @@ try:
         titolo = ("^GSPC")
         
         # immagine credenziali qui
-        st.sidebar.markdown("##** Non possiedi le credenziali? **")
+        st.sidebar.markdown("""##** Non possiedi le credenziali? **""")
         st.sidebar.markdown("Clicca sul link qua sotto per attivare una prova gratuita")
         st.sidebar.markdown("https://wp.me/P9LLei-3v")
 
@@ -95,7 +95,7 @@ except:
     """)
     
     # immagine credenziali qui
-    st.sidebar.markdown("##** Non possiedi le credenziali? **")
+    st.sidebar.markdown("""##** Non possiedi le credenziali? **""")
     st.sidebar.markdown("Clicca sul link qua sotto per attivare una prova gratuita")
     st.sidebar.markdown("https://wp.me/P9LLei-3v")
     titolo = ("^GSPC")
