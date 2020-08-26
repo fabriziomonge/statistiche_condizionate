@@ -80,8 +80,9 @@ try:
         titolo = ("^GSPC")
         
         # immagine credenziali qui
-        credenziali = Image.open('credenziali.png')
-        st.sidebar.image(credenziali, use_column_width=True)
+        st.sidebar.markdown("** Non possiedi le credenziali? **")
+        st.sidebar.markdown("Clicca sul link qua sotto per attivare una prova gratuita")
+        st.sidebar.markdown("https://wp.me/P9LLei-3v")
 
 except:
     
@@ -94,9 +95,9 @@ except:
     """)
     
     # immagine credenziali qui
-    credenziali = Image.open('credenziali.png')
-    st.sidebar.image(credenziali, use_column_width=True)
-    
+    st.sidebar.markdown("** Non possiedi le credenziali? **")
+    st.sidebar.markdown("Clicca sul link qua sotto per attivare una prova gratuita")
+    st.sidebar.markdown("https://wp.me/P9LLei-3v")
     titolo = ("^GSPC")
 
 mesi_proiezione = st.number_input("Mesi per la proiezione statistica", min_value = 1, max_value=240, value = 60)
