@@ -68,7 +68,9 @@ try:
         
         st.write('https://wp.me/P9LLei-37')
         try:
-            residuo = (accessi['Scadenza'][Utente] - A)
+            residuo = (accessi['Scadenza'][Utente])
+            st.sidebar.markdown("** Il tuo abbonamento scade il: **")
+            st.sidebar.markdown(residuo)
         except:
             residuo = 103
             st.sidebar.markdown(residuo)
