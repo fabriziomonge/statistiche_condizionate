@@ -369,7 +369,7 @@ cond = (cond1&cond2&cond3&cond4&cond5)
 
 df2 = df1.loc[cond]
 
-if len(df2.dropna())<=5:
+if len(df2.dropna())<=0:
  st.write("""
  ## Il numero di casi, come definito dai parametri inseriti, è troppo esiguo. Prova ad eliminare alcuni parametri per aumentare la casistica analizzata.
  """)
