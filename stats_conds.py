@@ -72,11 +72,12 @@ try:
             tipologia = (accessi['Tipo'][Utente])
             st.sidebar.markdown("** Il tuo abbonamento scade il: **")
             st.sidebar.markdown(residuo)
+            st.sidebar.markdown("** Tipologia abbonamento: **")
+            st.sidebar.markdown(tipologia)
         except:
             residuo = 103
             st.sidebar.markdown(residuo)
-            st.sidebar.markdown("** Tipologia abbonamento: **")
-            st.sidebar.markdown(tipologia)
+
     else:
         st.write("""
            ** Credenziali errate o scadute: non sarà possibile modificare l'asset oggetto di studio. **
