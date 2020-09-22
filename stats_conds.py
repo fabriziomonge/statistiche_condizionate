@@ -16,6 +16,9 @@ from PIL import Image
 image = Image.open('statistiche_condizionate1.png')
 st.sidebar.image(image, use_column_width=True)
 
+st.sidebar.markdown(""" Scopri le statistiche condizionate a questo link:""")
+st.sidebar.markdown("https://wp.me/P9LLei-3O")
+
 hide_streamlit_style = """
             <style>
             
