@@ -414,7 +414,7 @@ else:
             lista_sit = [ casi, positivi_ass, positivi, media, varianza, mediana, peggiore, migliore]
             lista_tot = [ casi_tot,positivi_tot_ass, positivi_tot, media_tot, varianza_tot, mediana_tot, peggiore_tot, migliore_tot]
 
-            statistiche = pd.DataFrame(lista_sit, index=['Casi', 'Di cui positivi', 'Positivi (%)', 'Media (%)', 'Varianza (%)', 'Mediana (%)', 'Peggiore risultato (%)', 'Migliore risultato(%)'], columns=['Con i parametri attuali'])
+            statistiche = pd.DataFrame(lista_sit, index=['Casi', 'Di cui positivi', 'Positivi (%)', 'Media (%)', 'Varianza (%)', 'Mediana (%)', 'Peggiore risultato (%)', 'Migliore risultato(%)'], columns=['Nelle attuali condizioni'])
             statistiche['Nella storia']=lista_tot
 
             st.write("""
